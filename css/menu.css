@@ -1,0 +1,336 @@
+/* Menu Page Specific Styles */
+
+.order-toggle-section {
+    background-color: var(--secondary-color);
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 70px;
+    z-index: 100;
+}
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.toggle-label {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 40px;
+    width: 40px;
+    left: 5px;
+    bottom: 5px;
+    background-color: white;
+    transition: var(--transition);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(150px);
+}
+
+.toggle-option {
+    color: white;
+    font-weight: 600;
+    z-index: 1;
+    transition: var(--transition);
+}
+
+.toggle-switch input:checked + .toggle-slider .call-option {
+    opacity: 0.7;
+}
+
+.toggle-switch input:not(:checked) + .toggle-slider .whatsapp-option {
+    opacity: 0.7;
+}
+
+/* Menu Categories */
+.menu-categories {
+    background-color: white;
+    padding: 2rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.category-btn {
+    padding: 12px 24px;
+    background: var(--secondary-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.category-btn.active,
+.category-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Menu Items */
+.menu-items {
+    background-color: var(--secondary-color);
+    padding: 3rem 0;
+}
+
+.menu-category {
+    margin-bottom: 4rem;
+}
+
+.menu-category:last-child {
+    margin-bottom: 0;
+}
+
+.category-title {
+    text-align: left;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--dark-color);
+}
+
+.category-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.menu-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    gap: 1.5rem;
+    transition: var(--transition);
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-info h3 {
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+    font-size: 1.2rem;
+}
+
+.item-info p {
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.item-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.item-order-btn {
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+.item-order-btn:hover {
+    background: #c1121f;
+    transform: scale(1.05);
+}
+
+.item-order-btn.call-mode {
+    background: var(--dark-color);
+}
+
+.item-order-btn.call-mode:hover {
+    background: #0f1f3a;
+}
+
+/* Quick Order Section */
+.quick-order {
+    background: linear-gradient(135deg, var(--primary-color), #c1121f);
+    color: white;
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.quick-order-content h2 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.quick-order-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.quick-order-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.quick-order-buttons .btn {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+}
+
+.call-btn {
+    background: white;
+    color: var(--dark-color);
+}
+
+.call-btn:hover {
+    background: var(--secondary-color);
+    color: var(--dark-color);
+}
+
+.whatsapp-btn {
+    background: #25D366;
+    color: white;
+}
+
+.whatsapp-btn:hover {
+    background: #128C7E;
+    color: white;
+}
+
+/* Category filtering animation */
+.menu-category {
+    transition: all 0.5s ease;
+}
+
+.menu-category.hidden {
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Responsive Styles for Menu Page */
+@media (max-width: 768px) {
+    .toggle-switch {
+        width: 180px;
+        height: 45px;
+    }
+    
+    .toggle-switch input:checked + .toggle-slider:before {
+        transform: translateX(135px);
+    }
+    
+    .category-items {
+        grid-template-columns: 1fr;
+    }
+    
+    .menu-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .item-order-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .quick-order-content h2 {
+        font-size: 2rem;
+    }
+    
+    .quick-order-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .quick-order-buttons .btn {
+        width: 80%;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 576px) {
+    .toggle-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .category-buttons {
+        gap: 0.5rem;
+    }
+    
+    .category-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .menu-item {
+        margin: 0 10px;
+    }
+}

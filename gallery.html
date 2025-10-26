@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Apna Adda</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html">Apna Adda</a>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <a href="special-dishes.html" class="nav-link">Special Dishes</a>
+                    <a href="menu.html" class="nav-link">Menu</a>
+                    <a href="gallery.html" class="nav-link active">Gallery</a>
+                    <a href="franchise.html" class="nav-link">Franchise</a>
+                    <a href="contact.html" class="nav-link">Contact Us</a>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Gallery</h1>
+            <p>Take a visual journey through the Apna Adda experience</p>
+        </div>
+    </section>
+
+    <!-- Gallery Filter -->
+    <section class="gallery-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Photos</button>
+                <button class="filter-btn" data-filter="food">Food</button>
+                <button class="filter-btn" data-filter="chai">Chai</button>
+                <button class="filter-btn" data-filter="ambiance">Ambiance</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-grid-section">
+        <div class="container">
+            <div class="gallery-grid">
+                <!-- Food Images -->
+                <div class="gallery-item fade-element" data-category="food">
+                    <img src="https://picsum.photos/id/312/400/300" alt="Special Chai" data-full="https://picsum.photos/id/312/1200/800">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Masala Magic Chai</h3>
+                            <p>Our signature chai blend</p>
+                        </div>
+                        <button class="gallery-expand">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-element" data-category="food">
+                    <img src="https://picsum.photos/id/488/400/300" alt="Special Burger" data-full="https://picsum.photos/id/488/1200/800">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Adda Special Burger</h3>
+                            <p>Loaded with fresh ingredients</p>
+                        </div>
+                        <button class="gallery-expand">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-element" data-category="chai">
+                    <img src="https://picsum.photos/id/430/400/300" alt="Kashmiri Kahwa" data-full="https://picsum.photos/id/430/1200/800">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Kashmiri Kahwa</h3>
+                            <p>Traditional green tea</p>
+                        </div>
+                        <button class="gallery-expand">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ambiance Images -->
+                <div class="gallery-item fade-element" data-category="ambiance">
+                    <img src="https://picsum.photos/id/1060/400/300" alt="Restaurant Interior" data-full="https://picsum.photos/id/1060/1200/800">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Cozy Interior</h3>
+                            <p>Perfect hangout spot</p>
+                        </div>
+                        <button class="gallery-expand">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-element" data-category="ambiance">
+                    <img src="https://picsum.photos/id/1061/400/300" alt="Outdoor Seating" data-full="https://picsum.photos/id/1061/1200/800">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Outdoor Seating</h3>
+                            <p>Enjoy the weather</p>
+                        </div>
+                        <button class="gallery-expand">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-element" data-category="food">
+                    <img src="https://picsum.photos/id/490/400/300" alt="Crispy Samosas" data-full="https://picsum.photos/id/490/1200/800">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Crispy Samosas</h3>
+                            <p>Golden and delicious</p>
+                        </div>
+                        <button class="gallery-expand">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Events Images -->
+                <div class="gallery-item fade-element" data-category="events">
+                    <img src="https://picsum.photos/id/1062/400/300" alt="Live Music Night" data-full="https://picsum.photos/id/1062/1200/800">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Live Music Night</h3>
+                            <p>Weekly entertainment</p>
+                        </div>
+                        <button class="gallery-expand">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-element" data-category="events">
+                    <img src="https://picsum.photos/id/1063/400/300" alt="Friends Gathering" data-full="https://picsum.photos/id/1063/1200/800">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Friends Gathering</h3>
+                            <p>Perfect place to meet</p>
+                        </div>
+                        <button class="gallery-expand">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-element" data-category="chai">
+                    <img src="https://picsum.photos/id/495/400/300" alt="Rose Elaichi Chai" data-full="https://picsum.photos/id/495/1200/800">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Rose Elaichi Chai</h3>
+                            <p>Floral delight</p>
+                        </div>
+                        <button class="gallery-expand">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-element" data-category="food">
+                    <img src="https://picsum.photos/id/492/400/300" alt="Spicy Chicken Burger" data-full="https://picsum.photos/id/492/1200/800">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Spicy Chicken Burger</h3>
+                            <p>Juicy and flavorful</p>
+                        </div>
+                        <button class="gallery-expand">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-element" data-category="ambiance">
+                    <img src="https://picsum.photos/id/1064/400/300" alt="Evening Atmosphere" data-full="https://picsum.photos/id/1064/1200/800">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Evening Atmosphere</h3>
+                            <p>Warm and inviting</p>
+                        </div>
+                        <button class="gallery-expand">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-element" data-category="events">
+                    <img src="https://picsum.photos/id/1065/400/300" alt="Weekend Crowd" data-full="https://picsum.photos/id/1065/1200/800">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Weekend Crowd</h3>
+                            <p>Always buzzing</p>
+                        </div>
+                        <button class="gallery-expand">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightbox-modal">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="lightbox-nav lightbox-prev" id="lightbox-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="lightbox-nav lightbox-next" id="lightbox-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <img src="" alt="" id="lightbox-image">
+            <div class="lightbox-caption">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visit CTA -->
+    <section class="visit-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Liked What You See?</h2>
+                <p>Visit us today and experience the Apna Adda magic yourself</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">Get Directions</a>
+                    <a href="menu.html" class="btn btn-outline">View Menu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Apna Adda</h3>
+                    <p>Barhni Road, Itwa Bazar, Siddharth Nagar</p>
+                    <p>Fast Food & Unique Chai Experience</p>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> +91 99999 99999</p>
+                        <p><i class="fas fa-clock"></i> 7:00 AM - 11:00 PM</p>
+                        <p><i class="fas fa-calendar"></i> Open All Days</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="special-dishes.html"><i class="fas fa-star"></i> Special Dishes</a></li>
+                        <li><a href="menu.html"><i class="fas fa-utensils"></i> Menu</a></li>
+                        <li><a href="gallery.html"><i class="fas fa-images"></i> Gallery</a></li>
+                        <li><a href="franchise.html"><i class="fas fa-store"></i> Franchise</a></li>
+                        <li><a href="contact.html"><i class="fas fa-address-book"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal & Policies</h3>
+                    <ul>
+                        <li><a href="privacy-policy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                        <li><a href="terms-conditions.html"><i class="fas fa-file-contract"></i> Terms & Conditions</a></li>
+                        <li><a href="refund-policy.html"><i class="fas fa-exchange-alt"></i> Refund Policy</a></li>
+                        <li><a href="shipping-policy.html"><i class="fas fa-shipping-fast"></i> Shipping Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-btn instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/919999999999" class="social-btn whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-btn twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="newsletter">
+                        <h4>Subscribe to Newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2023 Apna Adda. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <span>|</span>
+                        <a href="terms-conditions.html">Terms & Conditions</a>
+                        <span>|</span>
+                        <a href="sitemap.html">Sitemap</a>
+                    </div>
+                    <p class="made-with-love">
+                        Made with <span class="heart">❤️</span> by <a href="https://wa.me/919999999999">majidiliyas</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>

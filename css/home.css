@@ -1,16 +1,18 @@
-/* Home Page Specific Styles */
+ /* Home Page Specific Styles */
 
 /* Hero Section with Image */
 .hero {
     position: relative;
     height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
     overflow: hidden;
-    margin-top: 80px; /* Added for fixed header */
+    margin-top: 90px; /* Added for fixed header */
+    height: calc(100vh - 90px);
 }
 
 .hero-image {
@@ -25,7 +27,6 @@
 .hero-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     object-position: center;
 }
 

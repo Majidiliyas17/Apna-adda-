@@ -1,24 +1,7 @@
 // Home Page Specific JavaScript
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Order buttons functionality for home page
-    const orderButtons = document.querySelectorAll('.order-btn');
-    
-    orderButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const phoneNumber = this.getAttribute('data-whatsapp');
-            const productName = this.closest('.dish-card').querySelector('h3').textContent;
-            const price = this.closest('.dish-card').querySelector('.dish-price').textContent;
-            
-            // Create WhatsApp message
-            const message = `Hello Apna Adda! I would like to order:\n\n${productName} - ${price}\n\nPlease confirm availability and delivery time.`;
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            
-            // Open WhatsApp
-            window.open(whatsappURL, '_blank');
-        });
-    });
+    // Order Now buttons have been removed, so no functionality needed
     
     // Add staggered animation to home page elements
     const aboutContent = document.querySelector('.about-content');

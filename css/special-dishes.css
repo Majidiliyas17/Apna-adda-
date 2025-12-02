@@ -88,6 +88,7 @@
 
 .dish-content {
     padding: 1.5rem;
+    min-height: 250px; /* Added to maintain consistent card height */
 }
 
 .dish-content h3 {
@@ -99,13 +100,16 @@
     color: var(--text-light);
     margin-bottom: 1rem;
     font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 .dish-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-top: auto; /* Push to bottom of content area */
+    padding-top: 1rem;
+    border-top: 1px solid var(--secondary-color);
 }
 
 .dish-price {
@@ -127,27 +131,8 @@
     color: #ffc107;
 }
 
-.order-btn {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(135deg, var(--primary-color), #c1121f);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-}
-
-.order-btn:hover {
-    background: linear-gradient(135deg, #c1121f, var(--primary-color));
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
-}
+/* Removed Order Button Styles */
+/* .order-btn styles have been removed */
 
 /* CTA Section */
 .cta-section {
@@ -193,6 +178,12 @@
 }
 
 /* Responsive Styles for Special Dishes */
+@media (max-width: 992px) {
+    .dishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .dishes-grid {
         grid-template-columns: 1fr;
@@ -229,5 +220,9 @@
     
     .dish-card {
         margin: 0 10px;
+    }
+    
+    .dish-content {
+        min-height: 220px;
     }
 }

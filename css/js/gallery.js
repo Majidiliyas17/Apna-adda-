@@ -1,72 +1,36 @@
-// Gallery Page Specific JavaScript
+// Gallery Page Specific JavaScript - Food Items Version
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Filter functionality
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
-            
-            const filterValue = button.getAttribute('data-filter');
-            
-            // Filter gallery items
-            galleryItems.forEach(item => {
-                if (filterValue === 'all') {
-                    item.classList.remove('hidden');
-                } else {
-                    if (item.getAttribute('data-category') === filterValue) {
-                        item.classList.remove('hidden');
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                }
-            });
-        });
-    });
-    
     // Lightbox functionality
     const lightboxModal = document.getElementById('lightbox-modal');
     const lightboxImage = document.getElementById('lightbox-image');
     const lightboxTitle = document.getElementById('lightbox-title');
     const lightboxDescription = document.getElementById('lightbox-description');
+    const lightboxPrice = document.getElementById('lightbox-price');
     const lightboxClose = document.getElementById('lightbox-close');
     const lightboxPrev = document.getElementById('lightbox-prev');
     const lightboxNext = document.getElementById('lightbox-next');
     
     let currentImageIndex = 0;
-    let images = [];
+    let foodItems = [];
     
-    // Initialize images array
-    galleryItems.forEach(item => {
-        const img = item.querySelector('img');
-        const title = item.querySelector('.gallery-info h3').textContent;
-        const description = item.querySelector('.gallery-info p').textContent;
+    // Initialize food items array from gallery
+    const foodElements = document.querySelectorAll('.food-item');
+    
+    foodElements.forEach((item, index) => {
+        const img = item.querySelector('.food-image img');
+        const title = item.querySelector('.food-info h3').textContent;
+        const description = item.querySelector('.food-info p').textContent;
+        const price = item.querySelector('.food-price').textContent;
         
-        images.push({
-            src: img.getAttribute('data-full'),
+        foodItems.push({
+            src: img.getAttribute('src'),
             title: title,
-            description: description
-        });
-    });
-    
-    // Open lightbox
-    galleryItems.forEach((item, index) => {
-        const expandBtn = item.querySelector('.gallery-expand');
-        
-        expandBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            currentImageIndex = index;
-            updateLightbox();
-            lightboxModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            description: description,
+            price: price
         });
         
-        // Also open lightbox when clicking on the image
+        // Add click event to each food item
         item.addEventListener('click', () => {
             currentImageIndex = index;
             updateLightbox();
@@ -91,12 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Navigation
     lightboxPrev.addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        currentImageIndex = (currentImageIndex - 1 + foodItems.length) % foodItems.length;
         updateLightbox();
     });
     
     lightboxNext.addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex + 1) % images.length;
+        currentImageIndex = (currentImageIndex + 1) % foodItems.length;
         updateLightbox();
     });
     
@@ -108,23 +72,34 @@ document.addEventListener('DOMContentLoaded', () => {
             lightboxModal.classList.remove('active');
             document.body.style.overflow = 'auto';
         } else if (e.key === 'ArrowLeft') {
-            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            currentImageIndex = (currentImageIndex - 1 + foodItems.length) % foodItems.length;
             updateLightbox();
         } else if (e.key === 'ArrowRight') {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
+            currentImageIndex = (currentImageIndex + 1) % foodItems.length;
             updateLightbox();
         }
     });
     
     function updateLightbox() {
-        const currentImage = images[currentImageIndex];
-        lightboxImage.src = currentImage.src;
-        lightboxTitle.textContent = currentImage.title;
-        lightboxDescription.textContent = currentImage.description;
+        const currentItem = foodItems[currentImageIndex];
+        lightboxImage.src = currentItem.src;
+        lightboxTitle.textContent = currentItem.title;
+        lightboxDescription.textContent = currentItem.description;
+        lightboxPrice.textContent = currentItem.price;
+        
+        // Add alt text to image
+        lightboxImage.alt = currentItem.title;
     }
     
-    // Add staggered animation to gallery items
-    galleryItems.forEach((item, index) => {
-        item.style.animationDelay = `${index * 0.1}s`;
+    // Add image loading animation
+    const images = document.querySelectorAll('.food-image img');
+    images.forEach(img => {
+        img.addEventListener('load', function() {
+            this.style.opacity = '1';
+        });
+        
+        // Initial opacity for fade-in effect
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.3s ease';
     });
 });

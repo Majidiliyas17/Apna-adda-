@@ -29,24 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Order button functionality
-    const orderButtons = document.querySelectorAll('.order-btn');
-    
-    orderButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const phoneNumber = this.getAttribute('data-whatsapp');
-            const itemName = this.getAttribute('data-item');
-            const price = this.closest('.dish-card').querySelector('.dish-price').textContent;
-            
-            // Create WhatsApp message
-            const message = `Hello Apna Adda! I would like to order:\n\n${itemName} - ${price}\n\nPlease confirm availability and delivery time.`;
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            
-            // Open WhatsApp
-            window.open(whatsappURL, '_blank');
-        });
-    });
+    // Order button functionality REMOVED
+    // All order button related code has been removed
     
     // Add staggered animation to dish cards
     dishCards.forEach((card, index) => {

@@ -36,10 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const message = formData.get('message');
         
         // Create WhatsApp message
-        const whatsappMessage = `New Franchise Inquiry:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nCity: ${city}\nInvestment Range: ${investment} Lakhs\nMessage: ${message}`;
+        const whatsappMessage = `New Franchise Inquiry:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nCity: ${city}\nInvestment Range: ${investment}\nMessage: ${message}`;
         
         const encodedMessage = encodeURIComponent(whatsappMessage);
-        const whatsappURL = `https://wa.me/919999999999?text=${encodedMessage}`;
+        const whatsappURL = `https://wa.me/919919651251?text=${encodedMessage}`;
         
         // Open WhatsApp
         window.open(whatsappURL, '_blank');
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const message = `I'm interested in the ${package} package. Please provide more details.`;
             const encodedMessage = encodeURIComponent(message);
-            const whatsappURL = `https://wa.me/919999999999?text=${encodedMessage}`;
+            const whatsappURL = `https://wa.me/919919651251?text=${encodedMessage}`;
             
             window.open(whatsappURL, '_blank');
         });

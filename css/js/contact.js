@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Send via WhatsApp
             const whatsappMessage = `New Contact Form Submission:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nSubject: ${subject}\nMessage: ${message}`;
             const encodedMessage = encodeURIComponent(whatsappMessage);
-            const whatsappURL = `https://wa.me/919999999999?text=${encodedMessage}`;
+            const whatsappURL = `https://wa.me/919919651251?text=${encodedMessage}`;
             window.open(whatsappURL, '_blank');
         } else {
             // For call mode, we'll just show a success message

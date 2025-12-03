@@ -1,7 +1,6 @@
 // Gallery Page Specific JavaScript - Food Items Version
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Lightbox functionality
     const lightboxModal = document.getElementById('lightbox-modal');
     const lightboxImage = document.getElementById('lightbox-image');
     const lightboxTitle = document.getElementById('lightbox-title');
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentImageIndex = 0;
     let foodItems = [];
     
-    // Initialize food items array from gallery
     const foodElements = document.querySelectorAll('.food-item');
     
     foodElements.forEach((item, index) => {
@@ -30,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
             price: price
         });
         
-        // Add click event to each food item
         item.addEventListener('click', () => {
             currentImageIndex = index;
             updateLightbox();
@@ -39,13 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Close lightbox
     lightboxClose.addEventListener('click', () => {
         lightboxModal.classList.remove('active');
         document.body.style.overflow = 'auto';
     });
     
-    // Close lightbox when clicking outside the image
     lightboxModal.addEventListener('click', (e) => {
         if (e.target === lightboxModal) {
             lightboxModal.classList.remove('active');
@@ -53,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Navigation
     lightboxPrev.addEventListener('click', () => {
         currentImageIndex = (currentImageIndex - 1 + foodItems.length) % foodItems.length;
         updateLightbox();
@@ -64,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateLightbox();
     });
     
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (!lightboxModal.classList.contains('active')) return;
         
@@ -86,20 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxTitle.textContent = currentItem.title;
         lightboxDescription.textContent = currentItem.description;
         lightboxPrice.textContent = currentItem.price;
-        
-        // Add alt text to image
         lightboxImage.alt = currentItem.title;
     }
     
-    // Add image loading animation
     const images = document.querySelectorAll('.food-image img');
     images.forEach(img => {
-        img.addEventListener('load', function() {
-            this.style.opacity = '1';
-        });
-        
-        // Initial opacity for fade-in effect
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.3s ease';
+        img.style.opacity = '1';
     });
 });

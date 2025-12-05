@@ -610,14 +610,14 @@ section {
 }
 
 .made-with-love a {
-    color: var(--primary-color);
+    color: white;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 800;
     transition: var(--transition);
 }
 
 .made-with-love a:hover {
-    color: white;
+    color: var(--primary-color);
 }
 
 .heart {

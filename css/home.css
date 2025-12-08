@@ -184,6 +184,19 @@
     border-top: 1px solid #eee;
 }
 
+.dish-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+
 /* Order Now button removed - no styles needed */
 
 .section-footer {

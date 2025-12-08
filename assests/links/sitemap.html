@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap - UP 55 Fast Food Cafe & Dhaba</title>
+    <style>
+        /* Simple Styles - Using your website colors */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: white;
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #7c9798;
+        }
+        
+        .page-title h1 {
+            color: #7c9798;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .page-title p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .update-info {
+            background-color: #f1faee;
+            padding: 15px;
+            border-radius: 8px;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid #7c9798;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .category {
+            background: #f1faee;
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .category:hover {
+            border-color: #7c9798;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .category h2 {
+            color: #612025;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .category h2 i {
+            color: #7c9798;
+        }
+        
+        .links-list {
+            list-style: none;
+        }
+        
+        .links-list li {
+            margin-bottom: 12px;
+        }
+        
+        .links-list a {
+            color: #555;
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            background: white;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .links-list a:hover {
+            background: #7c9798;
+            color: white;
+            transform: translateX(5px);
+            border-color: #7c9798;
+        }
+        
+        .links-list a i {
+            width: 20px;
+        }
+        
+        .links-list strong {
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .quick-info {
+            background: #f1faee;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 2px solid #ddd;
+        }
+        
+        .quick-info h2 {
+            color: #612025;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .info-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .info-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .info-item:hover {
+            border-color: #7c9798;
+            transform: translateY(-3px);
+        }
+        
+        .info-item h3 {
+            color: #7c9798;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .service-tag {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #7c9798;
+            color: #7c9798;
+            font-size: 0.9rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .service-tag:hover {
+            background: #7c9798;
+            color: white;
+        }
+        
+        .back-button {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+        
+        .back-button a {
+            display: inline-block;
+            background: #7c9798;
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #7c9798;
+        }
+        
+        .back-button a:hover {
+            background: white;
+            color: #7c9798;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(124, 151, 152, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+            
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .category {
+                padding: 20px;
+            }
+            
+            .info-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-title h1 {
+                font-size: 1.5rem;
+            }
+            
+            .category h2 {
+                font-size: 1.2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Page Title -->
+    <div class="page-title">
+        <h1>Website Sitemap</h1>
+        <p>UP 55 Fast Food Cafe & Dhaba - Navigate Our Website</p>
+    </div>
+
+    <!-- Update Info -->
+    <div class="update-info">
+        📅 Last Updated: January 1, 2024
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="content-grid">
+        <!-- Main Pages -->
+        <div class="category">
+            <h2><i class="fas fa-home"></i> Main Pages</h2>
+            <ul class="links-list">
+                <li><a href="index.html"><i class="fas fa-home"></i> <strong>Home</strong> - Welcome to UP 55 Cafe & Dhaba</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> <strong>About Us</strong> - Our story and values</a></li>
+                <li><a href="special-dishes.html"><i class="fas fa-star"></i> <strong>Special Dishes</strong> - Chef's recommendations</a></li>
+                <li><a href="menu.html"><i class="fas fa-utensils"></i> <strong>Menu</strong> - Complete food & drink menu</a></li>
+                <li><a href="gallery.html"><i class="fas fa-images"></i> <strong>All Items</strong> - Photo gallery of all dishes</a></li>
+                <li><a href="franchise.html"><i class="fas fa-store"></i> <strong>Franchise</strong> - Business opportunities</a></li>
+                <li><a href="contact.html"><i class="fas fa-address-book"></i> <strong>Contact Us</strong> - Visit us or get in touch</a></li>
+            </ul>
+        </div>
+
+        <!-- Food Categories -->
+        <div class="category">
+            <h2><i class="fas fa-utensils"></i> Food Categories</h2>
+            <ul class="links-list">
+                <li><a href="special-dishes.html"><i class="fas fa-mug-hot"></i> Special Chai & Beverages</a></li>
+                <li><a href="menu.html"><i class="fas fa-hamburger"></i> Burgers & Sandwiches</a></li>
+                <li><a href="menu.html"><i class="fas fa-pizza-slice"></i> Snacks & Starters</a></li>
+                <li><a href="menu.html"><i class="fas fa-drumstick-bite"></i> Main Course Meals</a></li>
+                <li><a href="special-dishes.html"><i class="fas fa-ice-cream"></i> Desserts & Sweets</a></li>
+                <li><a href="menu.html"><i class="fas fa-glass-whiskey"></i> Cold Drinks & Shakes</a></li>
+                <li><a href="gallery.html"><i class="fas fa-camera"></i> View All Food Items</a></li>
+            </ul>
+        </div>
+
+        <!-- Services & Information -->
+        <div class="category">
+            <h2><i class="fas fa-concierge-bell"></i> Services & Information</h2>
+            <ul class="links-list">
+                <li><a href="franchise.html"><i class="fas fa-handshake"></i> <strong>Franchise Program</strong> - Start your own UP 55</a></li>
+                <li><a href="contact.html#bulk"><i class="fas fa-truck"></i> <strong>Bulk Orders</strong> - Catering & party orders</a></li>
+                <li><a href="terms-conditions.html"><i class="fas fa-file-contract"></i> <strong>Terms & Conditions</strong> - Service terms</a></li>
+                <li><a href="privacy-policy.html"><i class="fas fa-shield-alt"></i> <strong>Privacy Policy</strong> - Data protection</a></li>
+                <li><a href="sitemap.html"><i class="fas fa-sitemap"></i> <strong>Sitemap</strong> - This page</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Quick Information -->
+    <div class="quick-info">
+        <h2><i class="fas fa-info-circle"></i> Quick Information</h2>
+        <div class="info-items">
+            <div class="info-item">
+                <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+                <p>Barhni Road - Pipra Chaoraha, Near Petrol Pump, Itwa Bazar, Siddharth Nagar, Uttar Pradesh</p>
+            </div>
+            
+            <div class="info-item">
+                <h3><i class="fas fa-phone"></i> Contact</h3>
+                <p>Phone: +91 9919651251<br>WhatsApp: +91 9919651251</p>
+            </div>
+            
+            <div class="info-item">
+                <h3><i class="fas fa-clock"></i> Business Hours</h3>
+                <p>Open: 8:00 AM - 11:00 PM<br>Open All 7 Days</p>
+            </div>
+            
+            <div class="info-item">
+                <h3><i class="fas fa-concierge-bell"></i> Our Services</h3>
+                <div class="services-grid">
+                    <span class="service-tag">Dine-in</span>
+                    <span class="service-tag">Takeaway</span>
+                    <span class="service-tag">Bulk Orders</span>
+                    <span class="service-tag">Catering</span>
+                    <span class="service-tag">Party Orders</span>
+                    <span class="service-tag">Franchise</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delivery Notice -->
+    <div class="category" style="grid-column: 1 / -1; background: #fff3cd; border-color: #ffc107;">
+        <h2><i class="fas fa-truck"></i> Delivery Information</h2>
+        <p><strong>Important:</strong> We provide home delivery <strong>only for bulk orders (minimum ₹2000)</strong> within 5km radius from our outlet. Regular home delivery is not available for small orders. For bulk orders, please contact us in advance.</p>
+        <div class="services-grid" style="margin-top: 15px;">
+            <span class="service-tag" style="border-color: #612025; color: #612025;">Bulk Orders Only</span>
+            <span class="service-tag" style="border-color: #612025; color: #612025;">5km Radius</span>
+            <span class="service-tag" style="border-color: #612025; color: #612025;">Min. ₹2000</span>
+            <span class="service-tag" style="border-color: #612025; color: #612025;">Advance Notice</span>
+        </div>
+    </div>
+
+    <!-- Franchise Information -->
+    <div class="category" style="grid-column: 1 / -1; background: #e8f5e9; border-color: #4caf50;">
+        <h2><i class="fas fa-store"></i> Franchise Opportunity</h2>
+        <p>Interested in starting your own UP 55 Fast Food Cafe & Dhaba? We offer comprehensive franchise support including:</p>
+        <div class="services-grid" style="margin-top: 15px;">
+            <span class="service-tag" style="border-color: #4caf50; color: #4caf50;">Brand Training</span>
+            <span class="service-tag" style="border-color: #4caf50; color: #4caf50;">Recipe Support</span>
+            <span class="service-tag" style="border-color: #4caf50; color: #4caf50;">Marketing Help</span>
+            <span class="service-tag" style="border-color: #4caf50; color: #4caf50;">Supply Chain</span>
+            <span class="service-tag" style="border-color: #4caf50; color: #4caf50;">Quality Control</span>
+            <span class="service-tag" style="border-color: #4caf50; color: #4caf50;">Ongoing Support</span>
+        </div>
+        <p style="margin-top: 15px;"><a href="franchise.html" style="color: #4caf50; font-weight: 600; text-decoration: none;">→ Learn more about our franchise program</a></p>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back-button">
+        <a href="index.html">← Back to Homepage</a>
+    </div>
+</body>
+</html>

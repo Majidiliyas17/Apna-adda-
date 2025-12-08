@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const message = formData.get('message');
         
         // Create WhatsApp message
-        const whatsappMessage = `New Franchise Inquiry:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nCity: ${city}\nInvestment Range: ${investment}\nMessage: ${message}`;
+        const whatsappMessage = `New Franchise Inquiry:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nCity: ${city}\nFranchise Type: ${investment}\nMessage: ${message}`;
         
         const encodedMessage = encodeURIComponent(whatsappMessage);
         const whatsappURL = `https://wa.me/919919651251?text=${encodedMessage}`;
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open(whatsappURL, '_blank');
         
         // Show success message
-        alert('Thank you for your interest! We have opened WhatsApp for you to send your inquiry.');
+        alert('Thank you for your interest! We have opened WhatsApp for you to send your inquiry. Our team will contact you within 24 hours.');
         
         // Reset form
         this.reset();
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', function() {
             const package = this.getAttribute('data-package');
             
-            const message = `I'm interested in the ${package} package. Please provide more details.`;
+            const message = `I'm interested in the ${package} package. Please provide more details about investment and franchise opportunities.`;
             const encodedMessage = encodeURIComponent(message);
             const whatsappURL = `https://wa.me/919919651251?text=${encodedMessage}`;
             

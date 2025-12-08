@@ -26,11 +26,11 @@
             text-align: center;
             margin-bottom: 40px;
             padding-bottom: 20px;
-            border-bottom: 3px solid #7c9798;
+            border-bottom: 3px solid #612025;
         }
         
         .page-title h1 {
-            color: #7c9798;
+            color: #612025;
             font-size: 2.2rem;
             margin-bottom: 10px;
         }
@@ -50,7 +50,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            border-left: 4px solid #7c9798;
+            border-left: 4px solid #612025;
         }
         
         .content-grid {
@@ -69,7 +69,7 @@
         }
         
         .category:hover {
-            border-color: #7c9798;
+            border-color: #612025;
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
@@ -86,7 +86,7 @@
         }
         
         .category h2 i {
-            color: #7c9798;
+            color: #612025;
         }
         
         .links-list {
@@ -97,7 +97,7 @@
             margin-bottom: 12px;
         }
         
-        .links-list a {
+        .links-list div {
             color: #555;
             text-decoration: none;
             display: block;
@@ -111,14 +111,14 @@
             gap: 10px;
         }
         
-        .links-list a:hover {
-            background: #7c9798;
+        .links-list div:hover {
+            background: #612025;
             color: white;
             transform: translateX(5px);
-            border-color: #7c9798;
+            border-color: #612025;
         }
         
-        .links-list a i {
+        .links-list div i {
             width: 20px;
         }
         
@@ -161,12 +161,12 @@
         }
         
         .info-item:hover {
-            border-color: #7c9798;
+            border-color: #612025;
             transform: translateY(-3px);
         }
         
         .info-item h3 {
-            color: #7c9798;
+            color: #612025;
             margin-bottom: 10px;
             font-size: 1.1rem;
             display: flex;
@@ -190,15 +190,15 @@
             background: white;
             padding: 8px 15px;
             border-radius: 20px;
-            border: 1px solid #7c9798;
-            color: #7c9798;
+            border: 1px solid #612025;
+            color: #612025;
             font-size: 0.9rem;
             text-align: center;
             transition: all 0.3s ease;
         }
         
         .service-tag:hover {
-            background: #7c9798;
+            background: #612025;
             color: white;
         }
         
@@ -209,23 +209,24 @@
             border-top: 2px solid #eee;
         }
         
-        .back-button a {
+        .back-button div {
             display: inline-block;
-            background: #7c9798;
+            background: #612025;
             color: white;
             text-decoration: none;
             padding: 12px 30px;
             border-radius: 6px;
             font-weight: 500;
             transition: all 0.3s ease;
-            border: 2px solid #7c9798;
+            border: 2px solid #612025;
+            cursor: pointer;
         }
         
-        .back-button a:hover {
+        .back-button div:hover {
             background: white;
-            color: #7c9798;
+            color: #612025;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(124, 151, 152, 0.2);
+            box-shadow: 0 5px 15px rgba(97, 32, 37, 0.2);
         }
         
         @media (max-width: 768px) {
@@ -289,13 +290,13 @@
         <div class="category">
             <h2><i class="fas fa-home"></i> Main Pages</h2>
             <ul class="links-list">
-                <li><a href="index.html"><i class="fas fa-home"></i> <strong>Home</strong> - Welcome to UP 55 Cafe & Dhaba</a></li>
-                <li><a href="about.html"><i class="fas fa-info-circle"></i> <strong>About Us</strong> - Our story and values</a></li>
-                <li><a href="special-dishes.html"><i class="fas fa-star"></i> <strong>Special Dishes</strong> - Chef's recommendations</a></li>
-                <li><a href="menu.html"><i class="fas fa-utensils"></i> <strong>Menu</strong> - Complete food & drink menu</a></li>
-                <li><a href="gallery.html"><i class="fas fa-images"></i> <strong>All Items</strong> - Photo gallery of all dishes</a></li>
-                <li><a href="franchise.html"><i class="fas fa-store"></i> <strong>Franchise</strong> - Business opportunities</a></li>
-                <li><a href="contact.html"><i class="fas fa-address-book"></i> <strong>Contact Us</strong> - Visit us or get in touch</a></li>
+                <li><div><i class="fas fa-home"></i> <strong>Home</strong> - Welcome to UP 55 Cafe & Dhaba</div></li>
+                <li><div><i class="fas fa-info-circle"></i> <strong>About Us</strong> - Our story and values</div></li>
+                <li><div><i class="fas fa-star"></i> <strong>Special Dishes</strong> - Chef's recommendations</div></li>
+                <li><div><i class="fas fa-utensils"></i> <strong>Menu</strong> - Complete food & drink menu</div></li>
+                <li><div><i class="fas fa-images"></i> <strong>All Items</strong> - Photo gallery of all dishes</div></li>
+                <li><div><i class="fas fa-store"></i> <strong>Franchise</strong> - Business opportunities</div></li>
+                <li><div><i class="fas fa-address-book"></i> <strong>Contact Us</strong> - Visit us or get in touch</div></li>
             </ul>
         </div>
 
@@ -303,13 +304,13 @@
         <div class="category">
             <h2><i class="fas fa-utensils"></i> Food Categories</h2>
             <ul class="links-list">
-                <li><a href="special-dishes.html"><i class="fas fa-mug-hot"></i> Special Chai & Beverages</a></li>
-                <li><a href="menu.html"><i class="fas fa-hamburger"></i> Burgers & Sandwiches</a></li>
-                <li><a href="menu.html"><i class="fas fa-pizza-slice"></i> Snacks & Starters</a></li>
-                <li><a href="menu.html"><i class="fas fa-drumstick-bite"></i> Main Course Meals</a></li>
-                <li><a href="special-dishes.html"><i class="fas fa-ice-cream"></i> Desserts & Sweets</a></li>
-                <li><a href="menu.html"><i class="fas fa-glass-whiskey"></i> Cold Drinks & Shakes</a></li>
-                <li><a href="gallery.html"><i class="fas fa-camera"></i> View All Food Items</a></li>
+                <li><div><i class="fas fa-mug-hot"></i> Special Chai & Beverages</div></li>
+                <li><div><i class="fas fa-hamburger"></i> Burgers & Sandwiches</div></li>
+                <li><div><i class="fas fa-pizza-slice"></i> Snacks & Starters</div></li>
+                <li><div><i class="fas fa-drumstick-bite"></i> Main Course Meals</div></li>
+                <li><div><i class="fas fa-ice-cream"></i> Desserts & Sweets</div></li>
+                <li><div><i class="fas fa-glass-whiskey"></i> Cold Drinks & Shakes</div></li>
+                <li><div><i class="fas fa-camera"></i> View All Food Items</div></li>
             </ul>
         </div>
 
@@ -317,11 +318,11 @@
         <div class="category">
             <h2><i class="fas fa-concierge-bell"></i> Services & Information</h2>
             <ul class="links-list">
-                <li><a href="franchise.html"><i class="fas fa-handshake"></i> <strong>Franchise Program</strong> - Start your own UP 55</a></li>
-                <li><a href="contact.html#bulk"><i class="fas fa-truck"></i> <strong>Bulk Orders</strong> - Catering & party orders</a></li>
-                <li><a href="terms-conditions.html"><i class="fas fa-file-contract"></i> <strong>Terms & Conditions</strong> - Service terms</a></li>
-                <li><a href="privacy-policy.html"><i class="fas fa-shield-alt"></i> <strong>Privacy Policy</strong> - Data protection</a></li>
-                <li><a href="sitemap.html"><i class="fas fa-sitemap"></i> <strong>Sitemap</strong> - This page</a></li>
+                <li><div><i class="fas fa-handshake"></i> <strong>Franchise Program</strong> - Start your own UP 55</div></li>
+                <li><div><i class="fas fa-truck"></i> <strong>Bulk Orders</strong> - Catering & party orders</div></li>
+                <li><div><i class="fas fa-file-contract"></i> <strong>Terms & Conditions</strong> - Service terms</div></li>
+                <li><div><i class="fas fa-shield-alt"></i> <strong>Privacy Policy</strong> - Data protection</div></li>
+                <li><div><i class="fas fa-sitemap"></i> <strong>Sitemap</strong> - This page</div></li>
             </ul>
         </div>
     </div>
@@ -383,12 +384,12 @@
             <span class="service-tag" style="border-color: #4caf50; color: #4caf50;">Quality Control</span>
             <span class="service-tag" style="border-color: #4caf50; color: #4caf50;">Ongoing Support</span>
         </div>
-        <p style="margin-top: 15px;"><a href="franchise.html" style="color: #4caf50; font-weight: 600; text-decoration: none;">→ Learn more about our franchise program</a></p>
+        <p style="margin-top: 15px; color: #4caf50; font-weight: 600;">→ Learn more about our franchise program</p>
     </div>
 
     <!-- Back Button -->
     <div class="back-button">
-        <a href="index.html">← Back to Homepage</a>
+        <div onclick="window.history.back()">← Back to Homepage</div>
     </div>
 </body>
 </html>

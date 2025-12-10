@@ -27,7 +27,11 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     overflow-x: hidden;
+<<<<<<< HEAD
     
+=======
+    padding-top: 60px;
+>>>>>>> 98eb774dcbfc3ae085b15f8488b3fb57a3b999ef
 }
 
 .container {
@@ -53,7 +57,7 @@ h2 {
 }
 
 h3 {
-    font-size: 1.75rem;
+    font-size: 1.3rem;
 }
 
 p {

@@ -87,8 +87,8 @@
 }
 
 .dish-content {
-    padding: 1.5rem;
-    min-height: 250px; /* Added to maintain consistent card height */
+    padding: 1.1rem;
+    min-height: 200px; /* Added to maintain consistent card height */
 }
 
 .dish-content h3 {

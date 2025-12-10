@@ -39,8 +39,9 @@
 
 .dishes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
 }
 
 .dish-card {
@@ -49,7 +50,6 @@
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    position: relative;
 }
 
 .dish-card:hover {
@@ -113,7 +113,7 @@
 }
 
 .dish-price {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--primary-color);
 }
@@ -123,7 +123,7 @@
     align-items: center;
     gap: 0.5rem;
     background: var(--secondary-color);
-    padding: 5px 10px;
+    padding: 4px 10px;
     border-radius: 20px;
 }
 
@@ -180,49 +180,40 @@
 /* Responsive Styles for Special Dishes */
 @media (max-width: 992px) {
     .dishes-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr); /* 3–3 */
     }
 }
-
 @media (max-width: 768px) {
     .dishes-grid {
-        grid-template-columns: repeat(2, 1);
-    }
-    
-    .filter-buttons {
-        gap: 0.5rem;
-    }
-    
-    .filter-btn {
-        padding: 8px 16px;
-        font-size: 0.9rem;
-    }
-    
-    .cta-content h2 {
-        font-size: 3rem;
+        grid-template-columns: repeat(2, 1fr); /* 2–2 */
     }
 
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
+    .dish-image {
+        height: 200px;
     }
-    
-    .cta-buttons .btn {
-        width: 80%;
-        max-width: 250px;
+
+    .dish-content {
+        min-height: 150px;
     }
 }
 
+/* Small Phones */
 @media (max-width: 576px) {
-    .dishes-filter {
-        padding: 1.5rem 0;
+    .dishes-grid {
+        grid-template-columns: repeat(2, 1fr); /* Still 2–2 */
+        gap: 1rem;
     }
-    
+
     .dish-card {
-        margin: 0 10px;
+        margin: 0;
     }
-    
+
+    .dish-image {
+        height: 170px;
+    }
+
     .dish-content {
-        min-height: 220px;
+        padding: 1rem;
+        min-height: 160px;
     }
 }

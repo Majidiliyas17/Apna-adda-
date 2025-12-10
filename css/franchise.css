@@ -377,7 +377,11 @@
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    
+      .benefits-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 1.2rem;
+    }
+
     .process-steps {
         grid-template-columns: 1fr;
     }
@@ -416,6 +420,9 @@
     
     .faq-question {
         padding: 1rem 1.5rem;
+    }
+    .benefits-grid {
+        grid-template-columns: repeat(2, minmax(140px, 1fr)) !important;
     }
     
     .faq-question h3 {

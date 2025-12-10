@@ -165,7 +165,8 @@
 /* Responsive Styles for Menu Page */
 @media (max-width: 768px) {
     .category-items {
-        grid-template-columns: 1fr;
+         grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
     }
     
     .menu-item {
@@ -191,6 +192,9 @@
 @media (max-width: 576px) {
     .category-buttons {
         gap: 0.5rem;
+    }
+     .category-items {
+        grid-template-columns: repeat(2, minmax(150px, 1fr));
     }
     
     .category-btn {

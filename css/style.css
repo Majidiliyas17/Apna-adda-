@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 
 }
 
@@ -21,6 +20,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -115,6 +115,10 @@ a {
     color: white;
     transform: translateY(-3px);
     box-shadow: var(--shadow);
+}
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Header & Navigation */

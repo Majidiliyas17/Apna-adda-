@@ -136,7 +136,7 @@
 
 /* CTA Section */
 .cta-section {
-    background: linear-gradient(rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.9)), url('https://picsum.photos/id/1060/1200/400');
+    background: linear-gradient(rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.9)), url('../assests/images/M.jpg');
     background-size: cover;
     background-position: center;
     color: white;

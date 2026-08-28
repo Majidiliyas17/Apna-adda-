@@ -1,5 +1,4 @@
-// Gallery Page Specific JavaScript - Food Items Version
-
+// Gallery Page Specific JavaScript
 document.addEventListener('DOMContentLoaded', () => {
     const lightboxModal = document.getElementById('lightbox-modal');
     const lightboxImage = document.getElementById('lightbox-image');
@@ -9,25 +8,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxClose = document.getElementById('lightbox-close');
     const lightboxPrev = document.getElementById('lightbox-prev');
     const lightboxNext = document.getElementById('lightbox-next');
-    
+
     let currentImageIndex = 0;
     let foodItems = [];
-    
+
     const foodElements = document.querySelectorAll('.food-item');
-    
+
     foodElements.forEach((item, index) => {
+        item.classList.add('fade-element');
+        item.style.transitionDelay = (index % 12) * 0.06 + 's';
+
         const img = item.querySelector('.food-image img');
         const title = item.querySelector('.food-info h3').textContent;
         const description = item.querySelector('.food-info p').textContent;
         const price = item.querySelector('.food-price').textContent;
-        
+
         foodItems.push({
             src: img.getAttribute('src'),
             title: title,
             description: description,
             price: price
         });
-        
+
         item.addEventListener('click', () => {
             currentImageIndex = index;
             updateLightbox();
@@ -35,32 +37,40 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = 'hidden';
         });
     });
-    
-    lightboxClose.addEventListener('click', () => {
-        lightboxModal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
-    
-    lightboxModal.addEventListener('click', (e) => {
-        if (e.target === lightboxModal) {
+
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', () => {
             lightboxModal.classList.remove('active');
             document.body.style.overflow = 'auto';
-        }
-    });
-    
-    lightboxPrev.addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex - 1 + foodItems.length) % foodItems.length;
-        updateLightbox();
-    });
-    
-    lightboxNext.addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex + 1) % foodItems.length;
-        updateLightbox();
-    });
-    
+        });
+    }
+
+    if (lightboxModal) {
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) {
+                lightboxModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
+    if (lightboxPrev) {
+        lightboxPrev.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + foodItems.length) % foodItems.length;
+            updateLightbox();
+        });
+    }
+
+    if (lightboxNext) {
+        lightboxNext.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % foodItems.length;
+            updateLightbox();
+        });
+    }
+
     document.addEventListener('keydown', (e) => {
-        if (!lightboxModal.classList.contains('active')) return;
-        
+        if (!lightboxModal || !lightboxModal.classList.contains('active')) return;
+
         if (e.key === 'Escape') {
             lightboxModal.classList.remove('active');
             document.body.style.overflow = 'auto';
@@ -72,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateLightbox();
         }
     });
-    
+
     function updateLightbox() {
         const currentItem = foodItems[currentImageIndex];
         lightboxImage.src = currentItem.src;
@@ -81,9 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxPrice.textContent = currentItem.price;
         lightboxImage.alt = currentItem.title;
     }
-    
-    const images = document.querySelectorAll('.food-image img');
-    images.forEach(img => {
-        img.style.opacity = '1';
-    });
+
+    // CTA section
+    const ctaContent = document.querySelector('.visit-cta .cta-content');
+    if (ctaContent) {
+        ctaContent.classList.add('fade-element');
+    }
 });

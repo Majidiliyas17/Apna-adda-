@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Franchise - UP 55 Fast Food Cafe & Dhaba</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/franchise.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=2">
+    <link rel="stylesheet" href="css/franchise.css?v=2">
+    <link rel="stylesheet" href="css/responsive.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="mainHeader">
         <nav class="navbar">
              <div class="nav-container">
             <div class="nav-logo">
@@ -46,7 +49,7 @@
             <button class="close-nav" id="closeNav">&times;</button>
         </div>
         <nav class="side-nav-menu">
-            <a href="index.html" class="side-nav-link active">Home</a>
+            <a href="index.html" class="side-nav-link">Home</a>
             <a href="about.html" class="side-nav-link">About Us</a>
             <a href="special-dishes.html" class="side-nav-link">Special Dishes</a>
             <a href="menu.html" class="side-nav-link">Menu</a>
@@ -351,19 +354,23 @@
 
    <!-- Footer -->
     <footer class="footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,64L48,58.7C96,53,192,43,288,48C384,53,480,75,576,80C672,85,768,75,864,64C960,53,1056,43,1152,48C1248,53,1344,75,1392,85.3L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+            </svg>
+        </div>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>UP 55 Fast Food Cafe & Dhaba</h3>
                     <p>Barhni Road - Pipra Chaoraha, Near Petrol Pump, Itwa Bazar, Siddharth Nagar</p>
-                    <p>Fast Food & Unique Chai Experience</p>
+                    <p>Fast Foods & Unique Chai Experience</p>
                     <div class="footer-contact">
                         <p><i class="fas fa-phone"></i> +91 9919651251</p>
                         <p><i class="fas fa-clock"></i> 8:00 AM - 11:00 PM</p>
                         <p><i class="fas fa-calendar"></i> Open All Days</p>
                     </div>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
@@ -376,31 +383,28 @@
                         <li><a href="contact.html"><i class="fas fa-address-book"></i> Contact Us</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Legal & Policies</h3>
                     <ul>
                         <li><a href="assests/links/privacypolicy1.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
                         <li><a href="assests/links/terms&condition.html"><i class="fas fa-file-contract"></i> Terms & Conditions</a></li>
-                        </ul>
+                    </ul>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Connect With Us</h3>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/groups/504305451662388/?ref=share&mibextid=NSMWBT" class="social-btn facebook">
+                        <a href="https://www.facebook.com/groups/504305451662388/?ref=share&mibextid=NSMWBT" class="social-btn facebook" target="_blank">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://wa.me/919919651251" class="social-btn whatsapp">
+                        <a href="https://wa.me/919919651251" class="social-btn whatsapp" target="_blank">
                             <i class="fab fa-whatsapp"></i>
                         </a>
-                        <a href="https://www.instagram.com/up_55_restaurant?igsh=YjJpb3N0aDVyZjlm" class="social-btn instagram">
+                        <a href="https://www.instagram.com/up_55_restaurant?igsh=YjJpb3N0aDVyZjlm" class="social-btn instagram" target="_blank">
                             <i class="fab fa-instagram"></i>
-                            </a>
+                        </a>
                     </div>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
                     <p>&copy; 2022 UP 55 Fast Food Cafe & Dhaba. All rights reserved.</p>
@@ -412,14 +416,14 @@
                         <a href="assests/links/sitemap.html">Sitemap</a>
                     </div>
                     <p class="made-with-love">
-                        Made with <span class="heart">❤️</span> by <a href="https://wa.me/917310086133">MajidIliyas</a>
+                        Made with <span class="heart">❤️</span> by <a href="https://wa.me/917310086133">MajidIliyas</a>&amp;<a href="https://www.aspslai.com">ASPSLAI_TEAM</a>
                     </p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="/css/js/main.js"></script>
-    <script src="/css/js/franchise.js"></script>
+    <script src="css/js/main.js"></script>
+    <script src="css/js/franchise.js"></script>
 </body>
 </html>

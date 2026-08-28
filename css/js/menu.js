@@ -1,20 +1,16 @@
 // Menu Page Specific JavaScript
-
 document.addEventListener('DOMContentLoaded', () => {
     // Category filter functionality
     const categoryButtons = document.querySelectorAll('.category-btn');
     const menuCategories = document.querySelectorAll('.menu-category');
-    
+
     categoryButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Remove active class from all buttons
             categoryButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
             button.classList.add('active');
-            
+
             const category = button.getAttribute('data-category');
-            
-            // Filter menu categories
+
             menuCategories.forEach(categoryElement => {
                 if (category === 'all') {
                     categoryElement.classList.remove('hidden');
@@ -28,18 +24,23 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-    
-    // Add staggered animation to menu items
+
+    // Add fade-element class for scroll animations
     const menuItems = document.querySelectorAll('.menu-item');
     menuItems.forEach((item, index) => {
-        item.style.animationDelay = `${index * 0.1}s`;
         item.classList.add('fade-element');
+        item.style.transitionDelay = (index % 10) * 0.05 + 's';
     });
-    
-    // Add animation to category titles
+
     const categoryTitles = document.querySelectorAll('.category-title');
     categoryTitles.forEach((title, index) => {
-        title.style.animationDelay = `${index * 0.2}s`;
         title.classList.add('fade-element');
+        title.style.transitionDelay = (index * 0.1) + 's';
     });
+
+    // Quick order section
+    const quickOrder = document.querySelector('.quick-order');
+    if (quickOrder) {
+        quickOrder.querySelector('.quick-order-content').classList.add('fade-element');
+    }
 });

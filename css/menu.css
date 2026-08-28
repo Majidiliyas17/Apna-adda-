@@ -1,50 +1,55 @@
 /* Menu Page Specific Styles */
 
-/* Remove order toggle section */
 .order-toggle-section {
     display: none;
 }
 
-/* Menu Categories */
 .menu-categories {
-    background-color: white;
+    background: var(--white);
     padding: 2rem 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(97, 32, 37, 0.08);
+    position: sticky;
+    top: 80px;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .category-buttons {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
 .category-btn {
-    padding: 12px 24px;
-    background: var(--secondary-color);
+    padding: 10px 22px;
+    background: var(--white);
     border: 2px solid var(--accent-color);
-    border-radius: 25px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: var(--transition);
+    transition: var(--transition-smooth);
     font-weight: 500;
-    color: var(--dark-color);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-light);
+    letter-spacing: 0.02em;
 }
 
 .category-btn.active,
 .category-btn:hover {
     background: var(--primary-color);
-    color: white;
+    color: var(--white);
     border-color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(97, 32, 37, 0.3);
 }
 
-/* Menu Items */
 .menu-items {
-    background-color: var(--secondary-color);
-    padding: 3rem 0;
+    background: var(--bg-cream);
+    padding: 4rem 0;
 }
 
 .menu-category {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .menu-category:last-child {
@@ -53,103 +58,128 @@
 
 .category-title {
     text-align: left;
-    margin-bottom: 2rem;
-    padding-bottom: 0.5rem;
+    margin-bottom: 1.8rem;
+    padding-bottom: 0.6rem;
     border-bottom: 2px solid var(--primary-color);
     color: var(--dark-color);
-    font-size: 1.8rem;
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
 }
 
 .category-items {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.2rem;
 }
 
 .menu-item {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    border-left: 4px solid var(--primary-color);
+    background: var(--white);
+    padding: 1.2rem 1.4rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+    border-left: 4px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(97, 32, 37, 0.03), rgba(124, 151, 152, 0.04));
+    opacity: 0;
+    transition: var(--transition-smooth);
+    pointer-events: none;
 }
 
 .menu-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+    border-left-color: var(--primary-color);
+}
+
+.menu-item:hover::after {
+    opacity: 1;
 }
 
 .item-info {
-    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
 }
 
 .item-info h3 {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0;
     color: var(--dark-color);
-    font-size: 1.3rem;
-}
-
-.item-info p {
-    color: var(--text-light);
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
-    line-height: 1.5;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 600;
 }
 
 .item-price {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--primary-color);
-    display: inline-block;
-    padding: 0.3rem 1rem;
-    background: rgba(230, 57, 70, 0.1);
-    border-radius: 20px;
+    white-space: nowrap;
+    font-family: var(--font-body);
 }
 
-/* Remove all order button styles */
 .item-order-btn {
     display: none;
 }
 
-/* Quick Order Section */
 .quick-order {
-    background: linear-gradient(135deg, var(--primary-color), #c1121f);
-    color: white;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--white);
     text-align: center;
-    padding: 4rem 0;
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-order::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
 }
 
 .quick-order-content h2 {
     margin-bottom: 1rem;
-    font-size: 2.5rem;
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
 }
 
 .quick-order-content p {
     font-size: 1.1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    opacity: 0.9;
 }
 
 .quick-order-buttons {
     display: flex;
-    gap: 1rem;
+    gap: 1.2rem;
     justify-content: center;
     flex-wrap: wrap;
-}
-
-.quick-order-buttons .btn {
-    padding: 15px 30px;
-    font-size: 1.1rem;
 }
 
 .quick-order-buttons .btn i {
     margin-right: 0.5rem;
 }
 
-/* Category filtering animation */
 .menu-category {
     transition: all 0.5s ease;
 }
@@ -160,61 +190,4 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-}
-
-/* Responsive Styles for Menu Page */
-@media (max-width: 768px) {
-    .category-items {
-         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1rem;
-    }
-    
-    .menu-item {
-        flex-direction: column;
-        text-align: left;
-    }
-    
-    .quick-order-content h2 {
-        font-size: 2rem;
-    }
-    
-    .quick-order-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .quick-order-buttons .btn {
-        width: 80%;
-        max-width: 250px;
-    }
-}
-
-@media (max-width: 576px) {
-    .category-buttons {
-        gap: 0.5rem;
-    }
-     .category-items {
-        grid-template-columns: repeat(2, minmax(150px, 1fr));
-    }
-    
-    .category-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-    
-    .menu-item {
-        margin: 0 10px;
-    }
-    
-    .category-title {
-        font-size: 1.5rem;
-    }
-    
-    .item-info h3 {
-        font-size: 1.2rem;
-    }
-    
-    .item-price {
-        font-size: 1.3rem;
-    }
 }

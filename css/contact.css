@@ -4,7 +4,7 @@
     background-color: var(--secondary-color);
     padding: 1.5rem 0;
     position: sticky;
-    top: 70px;
+    top: 80px;
     z-index: 100;
 }
 
@@ -56,7 +56,8 @@
     width: 40px;
     left: 5px;
     bottom: 5px;
-    background-color: white;
+    background: transparent;
+    border: 3px solid white;
     transition: var(--transition);
     border-radius: 50%;
     z-index: 2;
@@ -71,6 +72,7 @@
     font-weight: 600;
     z-index: 1;
     transition: var(--transition);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .toggle-switch input:checked + .toggle-slider .call-option {
@@ -83,7 +85,7 @@
 
 /* Contact Info Section */
 .contact-info-section {
-    background-color: white;
+    background-color: var(--bg-warm);
     padding: 5rem 0;
 }
 
@@ -94,18 +96,37 @@
 }
 
 .contact-card {
-    background: var(--secondary-color);
+    background: var(--white);
     padding: 2.5rem 2rem;
     border-radius: 15px;
     text-align: center;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
     border-top: 4px solid var(--primary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(97, 32, 37, 0.03), rgba(124, 151, 152, 0.04));
+    opacity: 0;
+    transition: var(--transition-smooth);
+    pointer-events: none;
 }
 
 .contact-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.contact-card:hover::after {
+    opacity: 1;
 }
 
 .contact-icon {
@@ -153,7 +174,7 @@
 
 /* Map & Contact Form */
 .map-contact-section {
-    background-color: var(--secondary-color);
+    background-color: var(--bg-cream);
     padding: 5rem 0;
 }
 
@@ -267,7 +288,7 @@
 
 /* Quick Actions */
 .quick-actions {
-    background-color: white;
+    background-color: var(--bg-warm);
     padding: 5rem 0;
 }
 
@@ -278,17 +299,36 @@
 }
 
 .action-card {
-    background: var(--secondary-color);
+    background: var(--white);
     padding: 2.5rem 2rem;
     border-radius: 15px;
     text-align: center;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.action-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(97, 32, 37, 0.03), rgba(124, 151, 152, 0.04));
+    opacity: 0;
+    transition: var(--transition-smooth);
+    pointer-events: none;
 }
 
 .action-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.action-card:hover::after {
+    opacity: 1;
 }
 
 .action-card i {
@@ -315,7 +355,7 @@
 
 /* Contact FAQ */
 .contact-faq {
-    background-color: var(--secondary-color);
+    background-color: var(--bg-cream);
     padding: 5rem 0;
 }
 
@@ -326,16 +366,35 @@
 }
 
 .faq-item {
-    background: white;
+    background: var(--white);
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(97, 32, 37, 0.03), rgba(124, 151, 152, 0.04));
+    opacity: 0;
+    transition: var(--transition-smooth);
+    pointer-events: none;
 }
 
 .faq-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.faq-item:hover::after {
+    opacity: 1;
 }
 
 .faq-item h3 {
@@ -349,66 +408,4 @@
     margin-bottom: 0;
 }
 
-/* Toggle visibility for contact options */
-.call-option,
-.whatsapp-option {
-    transition: var(--transition);
-}
-
-.toggle-switch input:checked ~ .contact-grid .call-option,
-.toggle-switch input:checked ~ .quick-actions .call-option {
-    display: none;
-}
-
-.toggle-switch input:not(:checked) ~ .contact-grid .whatsapp-option,
-.toggle-switch input:not(:checked) ~ .quick-actions .whatsapp-option {
-    display: none;
-}
-
-/* Responsive Styles for Contact Page */
-@media (max-width: 768px) {
-    .map-contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .action-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .faq-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .toggle-container {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .contact-form-container {
-        padding: 1.5rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .toggle-switch {
-        width: 180px;
-        height: 45px;
-    }
-    
-    .toggle-switch input:checked + .toggle-slider:before {
-        transform: translateX(135px);
-    }
-    
-    .action-buttons .btn {
-        width: 100%;
-    }
-    
-    .map-placeholder img {
-        height: 300px;
-    }
-}
+/* Toggle visibility handled by JS */

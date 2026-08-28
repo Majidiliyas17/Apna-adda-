@@ -1,16 +1,16 @@
 // About Page Specific JavaScript
-
-// Additional animations for about page
 document.addEventListener('DOMContentLoaded', () => {
-    // Add staggered animation to value cards
+    // Staggered animation for value cards
     const valueCards = document.querySelectorAll('.value-card');
     valueCards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.2}s`;
+        card.classList.add('fade-element');
+        card.style.transitionDelay = (index * 0.15) + 's';
     });
-    
-    // Add staggered animation to team members
-    const teamMembers = document.querySelectorAll('.team-member');
-    teamMembers.forEach((member, index) => {
-        member.style.animationDelay = `${index * 0.3}s`;
+
+    // Staggered animation for story elements
+    const storyElements = document.querySelectorAll('.story-text, .story-image');
+    storyElements.forEach((el, index) => {
+        el.classList.add('fade-element');
+        el.style.transitionDelay = (index * 0.2) + 's';
     });
 });

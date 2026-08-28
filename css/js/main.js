@@ -1,23 +1,24 @@
-// Common JavaScript for all pages
+// =============================================
+// Main JavaScript - All Pages
+// =============================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+    // =============================================
     // Mobile Navigation with Side Menu
+    // =============================================
     const hamburger = document.getElementById('hamburger');
     const sideNav = document.getElementById('sideNav');
     const overlay = document.getElementById('overlay');
     const closeNav = document.getElementById('closeNav');
 
     if (hamburger && sideNav && overlay && closeNav) {
-        // Open mobile menu
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
+        function openMobileMenu() {
             hamburger.classList.add('active');
             sideNav.classList.add('open');
             overlay.classList.add('open');
             document.body.style.overflow = 'hidden';
-        });
+        }
 
-        // Close mobile menu
         function closeMobileMenu() {
             hamburger.classList.remove('active');
             sideNav.classList.remove('open');
@@ -25,51 +26,59 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = 'auto';
         }
 
-        // Close when clicking X button
-        closeNav.addEventListener('click', closeMobileMenu);
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (sideNav.classList.contains('open')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
 
-        // Close when clicking overlay
+        closeNav.addEventListener('click', closeMobileMenu);
         overlay.addEventListener('click', closeMobileMenu);
 
-        // Close when clicking on a link
         document.querySelectorAll('.side-nav-link').forEach(link => {
             link.addEventListener('click', closeMobileMenu);
         });
 
-        // Close on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && sideNav.classList.contains('open')) {
                 closeMobileMenu();
             }
         });
 
-        // Close when clicking outside
         document.addEventListener('click', (e) => {
-            if (sideNav.classList.contains('open') && 
-                !hamburger.contains(e.target) && 
+            if (sideNav.classList.contains('open') &&
+                !hamburger.contains(e.target) &&
                 !sideNav.contains(e.target)) {
                 closeMobileMenu();
             }
         });
     }
 
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        if (window.scrollY > 100) {
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
-            header.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
-        } else {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
-            header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-        }
-    });
+    // =============================================
+    // Header Scroll Effect
+    // =============================================
+    const header = document.getElementById('mainHeader') || document.querySelector('header');
 
-    // Set active navigation link based on current page
-    const currentPage = window.location.pathname.split('/').pop();
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }, { passive: true });
+    }
+
+    // =============================================
+    // Active Navigation Link
+    // =============================================
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-link');
     const sideNavLinks = document.querySelectorAll('.side-nav-link');
-    
+
     navLinks.forEach(link => {
         const linkPage = link.getAttribute('href');
         if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
@@ -78,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
             link.classList.remove('active');
         }
     });
-    
+
     sideNavLinks.forEach(link => {
         const linkPage = link.getAttribute('href');
         if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
@@ -88,48 +97,56 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Scroll animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+    // =============================================
+    // Scroll Animations (Intersection Observer)
+    // Runs after a small delay so page-specific JS
+    // can add .fade-element classes first
+    // =============================================
+    function initScrollAnimations() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-            }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-element').forEach(element => {
+            element.classList.add('animate-ready');
+            observer.observe(element);
         });
-    }, observerOptions);
+    }
 
-    // Observe elements for animation
-    const elementsToAnimate = document.querySelectorAll('.fade-element');
-    
-    elementsToAnimate.forEach(element => {
-        observer.observe(element);
-    });
+    // Delay observer init so page-specific JS can add .fade-element first
+    setTimeout(initScrollAnimations, 100);
 
-    // WhatsApp/Call Toggle Functionality (for all pages)
+    // =============================================
+    // WhatsApp/Call Toggle
+    // =============================================
     const toggleButtons = document.querySelectorAll('.toggle-btn');
     const quickActionButtons = document.querySelectorAll('.quick-action-btn');
-    
+
     if (toggleButtons.length > 0 && quickActionButtons.length > 0) {
-        let currentMode = 'whatsapp'; // Default mode
-        
+        let currentMode = 'whatsapp';
+
         toggleButtons.forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 const mode = this.classList.contains('call') ? 'call' : 'whatsapp';
                 currentMode = mode;
-                
-                // Update toggle buttons
+
                 toggleButtons.forEach(btn => {
                     btn.classList.remove('active');
                     if (btn.classList.contains(mode)) {
                         btn.classList.add('active');
                     }
                 });
-                
-                // Update quick action buttons visibility
+
                 quickActionButtons.forEach(actionBtn => {
                     if (actionBtn.classList.contains(mode)) {
                         actionBtn.style.display = 'flex';
@@ -139,14 +156,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         });
-        
-        // Set initial state - default to WhatsApp
+
         toggleButtons.forEach(btn => {
             if (btn.classList.contains('whatsapp')) {
                 btn.classList.add('active');
             }
         });
-        
+
         quickActionButtons.forEach(actionBtn => {
             if (actionBtn.classList.contains('whatsapp')) {
                 actionBtn.style.display = 'flex';

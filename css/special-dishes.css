@@ -1,64 +1,90 @@
 /* Special Dishes Page Specific Styles */
 
 .dishes-filter {
-    background-color: var(--secondary-color);
-    padding: 2rem 0;
+    background: var(--white);
+    padding: 1.5rem 0;
     position: sticky;
-    top: 70px;
+    top: 80px;
     z-index: 100;
+    border-bottom: 1px solid rgba(97, 32, 37, 0.08);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .filter-buttons {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
 .filter-btn {
-    padding: 10px 20px;
-    background: white;
+    padding: 10px 22px;
+    background: var(--white);
     border: 2px solid var(--accent-color);
-    border-radius: 25px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: var(--transition);
+    transition: var(--transition-smooth);
     font-weight: 500;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-light);
 }
 
 .filter-btn.active,
 .filter-btn:hover {
     background: var(--primary-color);
-    color: white;
+    color: var(--white);
     border-color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(97, 32, 37, 0.3);
 }
 
-/* Special Dishes Grid */
 .special-dishes {
-    background-color: white;
+    background: var(--bg-cream);
+    padding: 4rem 0;
 }
 
 .dishes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
-    padding: 1rem;
 }
 
 .dish-card {
-    background: white;
-    border-radius: 15px;
+    background: var(--white);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.dish-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(97, 32, 37, 0.03), rgba(124, 151, 152, 0.04));
+    opacity: 0;
+    transition: var(--transition-smooth);
+    pointer-events: none;
+    z-index: 1;
 }
 
 .dish-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.dish-card:hover::after {
+    opacity: 1;
 }
 
 .dish-image {
-    height: 250px;
+    height: 220px;
     overflow: hidden;
     position: relative;
 }
@@ -67,104 +93,114 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition);
+    transition: var(--transition-smooth);
 }
 
 .dish-card:hover .dish-image img {
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
-/* .dish-badge {
+.dish-badge {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 12px;
+    right: 12px;
     background: var(--primary-color);
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
+    color: var(--white);
+    padding: 5px 14px;
+    border-radius: 50px;
     font-size: 0.8rem;
     font-weight: 600;
-} */
+    z-index: 2;
+}
 
 .dish-content {
-    padding: 1.1rem;
-    min-height: 200px; /* Added to maintain consistent card height */
+    padding: 1.2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .dish-content h3 {
     margin-bottom: 0.5rem;
     color: var(--dark-color);
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
 }
 
 .dish-content p {
     color: var(--text-light);
     margin-bottom: 1rem;
-    font-size: 0.95rem;
-    line-height: 1.5;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    flex: 1;
 }
 
 .dish-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto; /* Push to bottom of content area */
-    padding-top: 1rem;
-    border-top: 1px solid var(--secondary-color);
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--border-light);
 }
 
 .dish-price {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--primary-color);
+    font-family: var(--font-body);
 }
 
 .dish-rating {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    background: var(--secondary-color);
+    gap: 0.3rem;
+    background: var(--bg-light);
     padding: 4px 10px;
     border-radius: 20px;
 }
 
 .dish-rating i {
     color: #ffc107;
+    font-size: 0.85rem;
 }
 
-/* Removed Order Button Styles */
-/* .order-btn styles have been removed */
+.dish-rating span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
 
-/* CTA Section */
 .cta-section {
-    background: linear-gradient(rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.9)), url('../assests/images/M.jpg');
+    background: linear-gradient(rgba(29, 53, 87, 0.92), rgba(29, 53, 87, 0.92)), url('../assests/images/M.jpg');
     background-size: cover;
     background-position: center;
-    color: white;
+    color: var(--white);
     text-align: center;
-    padding: 4rem 0;
+    padding: 5rem 0;
 }
 
 .cta-content h2 {
     margin-bottom: 1rem;
-    font-size: 2.5rem;
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
 }
 
 .cta-content p {
     font-size: 1.1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    opacity: 0.9;
 }
 
 .cta-buttons {
     display: flex;
-    gap: 1rem;
+    gap: 1.2rem;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-/* Animation for filtered items */
 .dish-card {
     transition: all 0.5s ease;
 }
@@ -175,45 +211,4 @@
     height: 0;
     margin: 0;
     padding: 0;
-}
-
-/* Responsive Styles for Special Dishes */
-@media (max-width: 992px) {
-    .dishes-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3–3 */
-    }
-}
-@media (max-width: 768px) {
-    .dishes-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2–2 */
-    }
-
-    .dish-image {
-        height: 200px;
-    }
-
-    .dish-content {
-        min-height: 150px;
-    }
-}
-
-/* Small Phones */
-@media (max-width: 576px) {
-    .dishes-grid {
-        grid-template-columns: repeat(2, 1fr); /* Still 2–2 */
-        gap: 1rem;
-    }
-
-    .dish-card {
-        margin: 0;
-    }
-
-    .dish-image {
-        height: 170px;
-    }
-
-    .dish-content {
-        padding: 1rem;
-        min-height: 160px;
-    }
 }

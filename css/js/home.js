@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
         heroVideo.volume = 1;
         heroVideo.play().catch(() => {});
 
-        // Step 2: On first scroll OR touch → unmute automatically (no click needed)
+        // Step 2: On first real user interaction → unmute automatically
+        // Desktop: mousemove, click, scroll | Mobile: touchstart
         const enableSound = () => {
             if (!soundEnabled) {
                 soundEnabled = true;
@@ -27,14 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // Only scroll and touch — no click required
-        window.addEventListener('scroll', enableSound, { once: true, passive: true });
+        // Desktop: mousemove is the most reliable first gesture
+        document.addEventListener('mousemove', enableSound, { once: true, passive: true });
+        document.addEventListener('click', enableSound, { once: true, passive: true });
+        document.addEventListener('keydown', enableSound, { once: true, passive: true });
+
+        // Mobile: touchstart
         document.addEventListener('touchstart', enableSound, { once: true, passive: true });
 
-        // Also try on any user gesture as fallback (click, key)
-        ['click', 'keydown'].forEach(evt => {
-            document.addEventListener(evt, enableSound, { once: true, passive: true });
-        });
+        // Scroll: skip first auto-fire by checking user actually scrolled
+        let scrollFired = false;
+        window.addEventListener('scroll', () => {
+            if (!scrollFired && window.scrollY > 10) {
+                scrollFired = true;
+                enableSound();
+            }
+        }, { passive: true });
 
         // Step 3: Hero visible → unmute & play, Hero hidden → mute & pause
         const heroObserver = new IntersectionObserver((entries) => {

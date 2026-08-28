@@ -36,8 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.addEventListener(evt, enableSound, { once: true, passive: true });
         });
 
-        // Step 3: Hero visible → unmute & play
-        // Once sound enabled by user, NEVER auto-mute again
+        // Step 3: Hero visible → unmute & play, Hero hidden → mute & pause
         const heroObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -48,6 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (heroVideo.paused) {
                         heroVideo.play().catch(() => {});
                     }
+                } else {
+                    heroVideo.muted = true;
+                    heroVideo.pause();
                 }
             });
         }, { threshold: 0.1 });

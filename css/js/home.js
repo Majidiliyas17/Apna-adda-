@@ -10,13 +10,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroVideo = document.getElementById('heroVideo');
 
     if (hero && heroVideo) {
-        hero.addEventListener('mouseenter', () => {
-            heroVideo.play();
+        let soundEnabled = false;
+
+        // Step 1: Play muted on load (browsers allow this)
+        heroVideo.play().catch(() => {});
+
+        // Step 2: On ANY user interaction → unmute (browser requires gesture)
+        const enableSound = () => {
+            if (!soundEnabled) {
+                soundEnabled = true;
+                heroVideo.muted = false;
+                heroVideo.volume = 1;
+                heroVideo.play().catch(() => {});
+            }
+        };
+
+        ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+            document.addEventListener(evt, enableSound, { once: false, passive: true });
         });
 
-        hero.addEventListener('mouseleave', () => {
-            heroVideo.pause();
-        });
+        // Step 3: Hero visible → unmute, Hero hidden → mute
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (soundEnabled) {
+                    if (entry.isIntersecting) {
+                        heroVideo.muted = false;
+                        heroVideo.volume = 1;
+                        heroVideo.play().catch(() => {});
+                    } else {
+                        heroVideo.muted = true;
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        heroObserver.observe(hero);
+
+        // Step 4: Fallback - if video didn't autoplay, retry on visibility
+        if (heroVideo.paused) {
+            const retryPlay = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        heroVideo.play().catch(() => {});
+                        retryPlay.disconnect();
+                    }
+                });
+            }, { threshold: 0.1 });
+            retryPlay.observe(hero);
+        }
     }
 
     // =============================================
@@ -44,45 +85,65 @@ document.addEventListener('DOMContentLoaded', () => {
     // =============================================
     const counters = document.querySelectorAll('.stat-number[data-count]');
 
+    function animateCounter(el) {
+        const target = parseInt(el.getAttribute('data-count'));
+        const duration = 2000;
+        const startTime = performance.now();
+
+        function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(eased * target);
+
+            if (target >= 1000) {
+                el.textContent = current.toLocaleString('en-IN');
+            } else {
+                el.textContent = current;
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                if (target >= 1000) {
+                    el.textContent = target.toLocaleString('en-IN');
+                } else {
+                    el.textContent = target;
+                }
+            }
+        }
+
+        requestAnimationFrame(updateCounter);
+    }
+
     if (counters.length > 0) {
+        const statsSection = document.querySelector('.about-stats');
+        let countersAnimated = false;
+
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    const target = parseInt(el.getAttribute('data-count'));
-                    const duration = 2000;
-                    const startTime = performance.now();
-
-                    function updateCounter(currentTime) {
-                        const elapsed = currentTime - startTime;
-                        const progress = Math.min(elapsed / duration, 1);
-                        const eased = 1 - Math.pow(1 - progress, 3);
-                        const current = Math.floor(eased * target);
-
-                        if (target >= 1000) {
-                            el.textContent = current.toLocaleString('en-IN');
-                        } else {
-                            el.textContent = current;
-                        }
-
-                        if (progress < 1) {
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            if (target >= 1000) {
-                                el.textContent = target.toLocaleString('en-IN');
-                            } else {
-                                el.textContent = target;
-                            }
-                        }
-                    }
-
-                    requestAnimationFrame(updateCounter);
-                    counterObserver.unobserve(el);
+                if (entry.isIntersecting && !countersAnimated) {
+                    countersAnimated = true;
+                    counters.forEach(counter => animateCounter(counter));
+                    counterObserver.disconnect();
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.2 });
 
-        counters.forEach(counter => counterObserver.observe(counter));
+        if (statsSection) {
+            counterObserver.observe(statsSection);
+        }
+
+        // Fallback: if section is already visible on load, animate after short delay
+        setTimeout(() => {
+            if (!countersAnimated && statsSection) {
+                const rect = statsSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    countersAnimated = true;
+                    counters.forEach(counter => animateCounter(counter));
+                }
+            }
+        }, 500);
     }
 
     // =============================================

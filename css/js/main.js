@@ -12,10 +12,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeNav = document.getElementById('closeNav');
 
     if (hamburger && sideNav && overlay && closeNav) {
+        let scrollPos = 0;
+
         function openMobileMenu() {
+            scrollPos = window.scrollY;
             hamburger.classList.add('active');
             sideNav.classList.add('open');
             overlay.classList.add('open');
+            document.body.style.position = 'fixed';
+            document.body.style.top = -scrollPos + 'px';
+            document.body.style.width = '100%';
             document.body.style.overflow = 'hidden';
         }
 
@@ -23,7 +29,11 @@ document.addEventListener('DOMContentLoaded', function () {
             hamburger.classList.remove('active');
             sideNav.classList.remove('open');
             overlay.classList.remove('open');
-            document.body.style.overflow = 'auto';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
+            window.scrollTo(0, scrollPos);
         }
 
         hamburger.addEventListener('click', (e) => {

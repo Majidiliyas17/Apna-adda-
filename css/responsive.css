@@ -32,10 +32,10 @@
     }
     .logo { width: 85px; }
     .navbar { padding: 0.3rem 0; }
-    .hamburger { display: flex !important; }
-    .hamburger .bar { width: 20px; height: 3px; margin: 3px 0; }
-    .hamburger .bar:nth-child(2) { width: 15px; }
-    .hamburger .bar:nth-child(3) { width: 17px; }
+    .hamburger { display: flex !important; padding: 6px 5px; }
+    .hamburger .bar { width: 18px; height: 2.5px; margin: 2.5px 0; }
+    .hamburger .bar:nth-child(2) { width: 13px; }
+    .hamburger .bar:nth-child(3) { width: 15px; }
     .container { width: 94%; padding: 0 10px; }
 
     /* --- Typography --- */
@@ -279,6 +279,10 @@
     header { height: 50px !important; }
     header.scrolled { height: 50px !important; }
     .logo { width: 75px; }
+    .hamburger { padding: 5px 4px; }
+    .hamburger .bar { width: 16px; height: 2px; margin: 2px 0; }
+    .hamburger .bar:nth-child(2) { width: 11px; }
+    .hamburger .bar:nth-child(3) { width: 13px; }
     .page-header { padding: 55px 0 25px; margin-top: 50px; }
     .page-header h1 { font-size: 1.3rem; }
 

@@ -12,23 +12,33 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hero && heroVideo) {
         let soundEnabled = false;
 
-        // Step 1: Play muted on load (browsers require this for autoplay)
+        // Step 1: Try to play muted on load
         heroVideo.muted = true;
         heroVideo.volume = 1;
         heroVideo.play().catch(() => {});
 
-        // Step 2: On first real user interaction → unmute automatically
-        // Desktop: mousemove, click, scroll | Mobile: touchstart
-        const enableSound = () => {
-            if (!soundEnabled) {
-                soundEnabled = true;
-                heroVideo.muted = false;
-                heroVideo.volume = 1;
+        // Step 2: Force play function - ensures video always plays
+        const forcePlay = () => {
+            if (heroVideo.paused) {
+                heroVideo.muted = true;
                 heroVideo.play().catch(() => {});
             }
         };
 
-        // Desktop: mousemove is the most reliable first gesture
+        // Step 3: Enable sound on ANY user gesture
+        const enableSound = () => {
+            if (!soundEnabled) {
+                soundEnabled = true;
+            }
+            // Always try to unmute and play when user interacts
+            heroVideo.muted = false;
+            heroVideo.volume = 1;
+            if (heroVideo.paused) {
+                heroVideo.play().catch(() => {});
+            }
+        };
+
+        // Desktop: mousemove, click, keydown
         document.addEventListener('mousemove', enableSound, { once: true, passive: true });
         document.addEventListener('click', enableSound, { once: true, passive: true });
         document.addEventListener('keydown', enableSound, { once: true, passive: true });
@@ -36,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Mobile: touchstart
         document.addEventListener('touchstart', enableSound, { once: true, passive: true });
 
-        // Scroll: skip first auto-fire by checking user actually scrolled
+        // Scroll: skip auto-fire, only real scroll
         let scrollFired = false;
         window.addEventListener('scroll', () => {
             if (!scrollFired && window.scrollY > 10) {
@@ -45,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: true });
 
-        // Step 3: Hero visible → unmute & play, Hero hidden → mute & pause
+        // Step 4: Hero visible → play & unmute, Hero hidden → pause & mute
         const heroObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -65,18 +75,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         heroObserver.observe(hero);
 
-        // Step 4: Fallback - if video didn't autoplay, retry on visibility
-        if (heroVideo.paused) {
-            const retryPlay = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        heroVideo.play().catch(() => {});
-                        retryPlay.disconnect();
-                    }
-                });
-            }, { threshold: 0.1 });
-            retryPlay.observe(hero);
-        }
+        // Step 5: Retry play every 500ms until video plays (desktop autoplay fix)
+        const retryInterval = setInterval(() => {
+            if (heroVideo.paused && hero.getBoundingClientRect().top < window.innerHeight) {
+                heroVideo.muted = true;
+                heroVideo.play().catch(() => {});
+            }
+            if (!heroVideo.paused) {
+                clearInterval(retryInterval);
+            }
+        }, 500);
+
+        // Stop retry after 10 seconds
+        setTimeout(() => clearInterval(retryInterval), 10000);
     }
 
     // =============================================

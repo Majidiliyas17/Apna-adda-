@@ -12,10 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hero && heroVideo) {
         let soundEnabled = false;
 
-        // Step 1: Play muted on load (browsers allow this)
+        // Step 1: Play muted on load (browsers require this for autoplay)
+        heroVideo.muted = true;
+        heroVideo.volume = 1;
         heroVideo.play().catch(() => {});
 
-        // Step 2: On ANY user interaction → unmute (browser requires gesture)
+        // Step 2: On first scroll OR touch → unmute automatically (no click needed)
         const enableSound = () => {
             if (!soundEnabled) {
                 soundEnabled = true;
@@ -25,21 +27,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
-            document.addEventListener(evt, enableSound, { once: false, passive: true });
+        // Only scroll and touch — no click required
+        window.addEventListener('scroll', enableSound, { once: true, passive: true });
+        document.addEventListener('touchstart', enableSound, { once: true, passive: true });
+
+        // Also try on any user gesture as fallback (click, key)
+        ['click', 'keydown'].forEach(evt => {
+            document.addEventListener(evt, enableSound, { once: true, passive: true });
         });
 
         // Step 3: Hero visible → unmute, Hero hidden → mute
         const heroObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (soundEnabled) {
-                    if (entry.isIntersecting) {
+                if (entry.isIntersecting) {
+                    if (soundEnabled) {
                         heroVideo.muted = false;
                         heroVideo.volume = 1;
                         heroVideo.play().catch(() => {});
-                    } else {
-                        heroVideo.muted = true;
                     }
+                } else {
+                    heroVideo.muted = true;
                 }
             });
         }, { threshold: 0.1 });

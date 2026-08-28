@@ -398,41 +398,154 @@ header.scrolled {
     background: rgba(255, 255, 255, 0.15);
 }
 
-/* Hamburger Menu - Always visible */
+/* Hamburger Menu - Grilled Chicken Style */
 .hamburger {
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    padding: 8px;
+    padding: 10px 8px;
     z-index: 1001;
     border-radius: var(--radius-sm);
-    transition: var(--transition-smooth);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+}
+
+/* Grilled glow backdrop — always visible */
+.hamburger::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 14px;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.35) 0%, rgba(255, 69, 0, 0.15) 40%, transparent 70%);
+    animation: grillPulse 2s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+/* Ember particles around hamburger */
+.hamburger::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255, 140, 0, 0.6) 0%, transparent 3%),
+        radial-gradient(circle at 85% 30%, rgba(255, 69, 0, 0.5) 0%, transparent 2.5%),
+        radial-gradient(circle at 50% 85%, rgba(255, 107, 53, 0.5) 0%, transparent 3%),
+        radial-gradient(circle at 20% 75%, rgba(255, 140, 0, 0.4) 0%, transparent 2%),
+        radial-gradient(circle at 80% 80%, rgba(255, 69, 0, 0.4) 0%, transparent 2.5%);
+    animation: embers 1.5s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes grillPulse {
+    0% {
+        box-shadow:
+            0 0 8px rgba(255, 107, 53, 0.3),
+            0 0 16px rgba(255, 69, 0, 0.15),
+            inset 0 0 6px rgba(255, 140, 0, 0.1);
+    }
+    50% {
+        box-shadow:
+            0 0 14px rgba(255, 140, 0, 0.5),
+            0 0 28px rgba(255, 69, 0, 0.25),
+            inset 0 0 10px rgba(255, 107, 53, 0.15);
+    }
+    100% {
+        box-shadow:
+            0 0 10px rgba(255, 69, 0, 0.4),
+            0 0 22px rgba(255, 140, 0, 0.2),
+            inset 0 0 8px rgba(255, 69, 0, 0.12);
+    }
+}
+
+@keyframes embers {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.05); }
 }
 
 .hamburger:hover {
-    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.08);
 }
 
+.hamburger:hover::before {
+    background: radial-gradient(circle, rgba(255, 140, 0, 0.5) 0%, rgba(255, 69, 0, 0.25) 40%, transparent 70%);
+}
+
+.hamburger:active {
+    transform: scale(0.92);
+}
+
+/* Bars — Grilled Chicken Golden Brown */
 .hamburger .bar {
     width: 24px;
-    height: 2.5px;
-    background-color: var(--white);
-    margin: 3px 0;
-    border-radius: 2px;
-    transition: var(--transition-smooth);
+    height: 3.5px;
+    margin: 3.5px 0;
+    border-radius: 3px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    transform-origin: center;
+    /* Grilled chicken gradient: golden → charred brown */
+    background: linear-gradient(90deg,
+        #FFD54F 0%,
+        #FFB74D 20%,
+        #E8943A 40%,
+        #D4842A 60%,
+        #C67A28 80%,
+        #A0522D 100%
+    );
+    box-shadow:
+        0 0 6px rgba(255, 140, 0, 0.5),
+        0 1px 2px rgba(0, 0, 0, 0.2);
+    animation: barGrill 2s ease-in-out infinite alternate;
 }
 
+@keyframes barGrill {
+    0% {
+        box-shadow:
+            0 0 5px rgba(255, 140, 0, 0.4),
+            0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        box-shadow:
+            0 0 10px rgba(255, 107, 53, 0.6),
+            0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Each bar slightly different — like grill marks */
+.hamburger .bar:nth-child(1) {
+    width: 24px;
+    animation-delay: 0s;
+}
+
+.hamburger .bar:nth-child(2) {
+    width: 18px;
+    margin-left: auto;
+    margin-right: 2px;
+    animation-delay: 0.3s;
+}
+
+.hamburger .bar:nth-child(3) {
+    width: 20px;
+    animation-delay: 0.6s;
+}
+
+/* Active state — X mark */
 .hamburger.active .bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(6px, 6px);
 }
-
 .hamburger.active .bar:nth-child(2) {
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateX(-12px) scaleX(0);
+}
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -7px);
+    width: 24px;
 }
 
-.hamburger.active .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
+.hamburger.active::before {
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.5) 0%, rgba(255, 69, 0, 0.3) 40%, transparent 70%);
+    animation: grillPulse 1s ease-in-out infinite alternate;
 }
 
 /* Side Navigation - Premium Style */
